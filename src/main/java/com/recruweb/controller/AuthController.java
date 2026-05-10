@@ -1,20 +1,33 @@
-
 package com.recruweb.controller;
+
+import com.recruweb.entity.User;
 import com.recruweb.service.UserService;
-import com.recruweb.entity.User; import com.recruweb.repository.UserRepository; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.web.bind.annotation.*;
 
-@RestController @RequestMapping("/api/auth") @CrossOrigin("*") public class AuthController {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-	@Autowired
-	private UserService userService;
+import java.util.Map;
 
-	@PostMapping("/register")
-	public User register(@RequestBody User user) {
-	    return userService.registerUser(user);
-	}
+@RestController
+@RequestMapping("/api/auth")
+@CrossOrigin("*")
+public class AuthController {
 
-	@PostMapping("/login")
-	public String login(@RequestBody User user) {
-	    return userService.loginUser(user);
-	}
+    @Autowired
+    private UserService userService;
+
+  
+    @PostMapping("/register")
+    public User register(@RequestBody User user) {
+        return userService.registerUser(user);
+    }
+
+    
+    @PostMapping("/login")
+    public Map<String, String> login(@RequestBody User user) {
+
+        Map<String, String> response = userService.loginUser(user);
+
+        return response;
+    }
 }

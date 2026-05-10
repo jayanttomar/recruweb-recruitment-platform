@@ -2,6 +2,7 @@ package com.recruweb.service;
 
 import com.recruweb.entity.Application;
 import com.recruweb.repository.ApplicationRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,13 +12,22 @@ import java.util.List;
 public class ApplicationService {
 
     @Autowired
-    private ApplicationRepository applicationRepository;
+    private ApplicationRepository
+            applicationRepository;
 
-    public Application saveApplication(Application application) {
-        return applicationRepository.save(application);
+    // Save Application
+    public Application saveApplication(
+            Application application) {
+
+        return applicationRepository
+                .save(application);
     }
 
-    public List<Application> getApplications() {
-        return applicationRepository.findAll();
+    // Get All Applications
+    public List<Application>
+    getApplications() {
+
+        return applicationRepository
+                .findAll();
     }
 }
